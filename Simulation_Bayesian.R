@@ -1,3 +1,9 @@
+K=3 # or 6
+q0=0.2 # historical benchmark response rate
+q1=0.3 # target response rate
+num.sim=2000 # number of simulations per setting
+alpha=0.1 #level of false positive rate we wish to control.
+p.sce=t(sapply(0:K,FUN=function(x){c(rep(q1,x),rep(q0,K-x))}))
 Decision.bayes=list()
 for (samplesize.bayes in 4:22) ### assuming that the sample size is between 4 and 22 for each indication group.
 {
@@ -12,7 +18,7 @@ for (samplesize.bayes in 4:22) ### assuming that the sample size is between 4 an
     q=rep(log(((q0+q1)/2)/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
     ############ Jags model for BHM:
     jags.data <- list("n"=nik.bayes, "Y"=rik.bayes, "K"=K, "q"=q,"g1"=log(q1/(1-q1))-log((q1+q0)/2/(1-(q1+q0)/2)),"g0"=-log((q1+q0)/2/(1-(q1+q0)/2))+log(q0/(1-q0)))
-    jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina.txt",data = jags.data,
+    jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina.txt",data = jags.data,
                            n.adapt=1000,n.chains=1,quiet=T)
     update(jags.fit, 4000)
     bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2"),n.iter=10000)
@@ -43,7 +49,7 @@ for (samplesize.bayes in 4:22) ### assuming that the sample size is between 4 an
       q=rep(log((q0+q1)/2/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
       ############ Jags model for BHM:
       jags.data <- list("n"=nik.bayes, "Y"=rik.bayes, "K"=K, "q"=q,"g1"=log(q1/(1-q1))-log((q1+q0)/2/(1-(q1+q0)/2)),"g0"=-log((q1+q0)/2/(1-(q1+q0)/2))+log(q0/(1-q0)))
-      jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina.txt",data = jags.data,
+      jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina.txt",data = jags.data,
                              n.adapt=1000,n.chains=1,quiet=T)
       update(jags.fit, 4000)
       bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2","tausq2"),n.iter=10000)
