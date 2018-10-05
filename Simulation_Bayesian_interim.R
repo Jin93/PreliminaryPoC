@@ -1,7 +1,10 @@
+########### This code is for the implement of the propose Bayesian approach after adding an interim analysis for futility stop. 
+########### The approach was considered but not adopted in the end. The results were not shown in the manuscript.
 load("simulationdata.RData")
 K=3
 q0=0.2 # historical benchmark response rate
 q1=0.3 # target response rate
+num.sim=2000 # number of simulations per setting
 alpha=0.1 #level of false positive rate we wish to control.
 p.sce=t(sapply(0:K,FUN=function(x){c(rep(q1,x),rep(q0,K-x))}))
 ######## obtained from the minimax Simon's two-stage design from 
