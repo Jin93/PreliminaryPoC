@@ -1,0 +1,22 @@
+model
+{
+  for (i in 1:K)
+  {
+    Y[i] ~ dbin(pi[i],n[i])
+    pi[i] <- exp(theta[i])/(1+exp(theta[i]))
+    theta[i] <- q[i] + delta[i] + e[i]
+    e[i] ~ dnorm(0,tausq[i])
+    
+    delta_branch[i,1] <- mu1;
+    delta_branch[i,2] <- mu2;
+    if_branch[i] <- 1+ step(-d[i] + 0.5) # 1 for d=1, 2 for d=0
+    delta[i] <- delta_branch[i,if_branch[i]]
+    
+    d[i] ~ dbern(p)
+    tausq[i] ~ dgamma(1,1)
+  }
+  p ~ dunif(0,1)
+  mu1 ~ dnorm(g1,tausq2) T(0, )
+  mu2 ~ dnorm(g0,tausq2) T(, 0)
+  tausq2 ~ dgamma(0.01,0.01)
+}
