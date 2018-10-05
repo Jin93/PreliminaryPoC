@@ -69,7 +69,7 @@ for (x in 1:nrow(bayesinterimtable)
       q=rep(log(((q0+q1)/2)/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
       ############ Jags model for BHM:
       jags.data <- list("n"=ni, "Y"=ri, "K"=K1, "q"=q)
-      jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
+      jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
                              n.adapt=1000,n.chains=1,quiet=T)
       update(jags.fit, 4000)
       bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2"),n.iter=10000)
@@ -125,7 +125,7 @@ for (x in 1:nrow(bayesinterimtable)
         q=rep(log(((q0+q1)/2)/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
         ############ Jags model for BHM:
         jags.data <- list("n"=ni, "Y"=ri, "K"=K1, "q"=q)
-        jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
+        jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
                                n.adapt=1000,n.chains=1,quiet=T)
         update(jags.fit, 4000)
         bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2"),n.iter=10000)
@@ -225,7 +225,7 @@ for (x in 1:nrow(bayesinterimtable))
       q=rep(log(((q0+q1)/2)/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
       ############ Jags model for BHM:
       jags.data <- list("n"=ni, "Y"=ri, "K"=K1, "q"=q)
-      jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
+      jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
                              n.adapt=1000,n.chains=1,quiet=T)
       update(jags.fit, 4000)
       bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2"),n.iter=10000)
@@ -280,7 +280,7 @@ for (x in 1:nrow(bayesinterimtable))
         q=rep(log(((q0+q1)/2)/(1-(q0+q1)/2)),K) ## can consider different settings based on histological data
         ############ Jags model for BHM:
         jags.data <- list("n"=ni, "Y"=ri, "K"=K1, "q"=q)
-        jags.fit <- jags.model(file = "C:/Users/e0359820/Desktop/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
+        jags.fit <- jags.model(file = "~/Jin/Signal Detection Project/a-ina_p.txt",data = jags.data,
                                n.adapt=1000,n.chains=1,quiet=T)
         update(jags.fit, 4000)
         bayes.out <- coda.samples(jags.fit,variable.names = c("p","d","pi","delta","tausq","mu1","mu2"),n.iter=10000)
