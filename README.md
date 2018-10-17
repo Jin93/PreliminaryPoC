@@ -1,3 +1,3 @@
 # Simulation-code-preliminary-PoC
 
-We provide the R code for the simulation in the manuscript "A Bayesian method for preliminary proof of concept in early phase oncology studies with a basket design" (2018).
+This repo contains the R code used for the simulation in the paper "A Bayesian method for preliminary proof of concept in early phase oncology studies with a basket design".
